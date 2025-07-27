@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Glowing animations and effects */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(202, 106, 52, 0.3), 0 0 10px rgba(202, 106, 52, 0.2), 0 0 15px rgba(202, 106, 52, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(202, 106, 52, 0.6), 0 0 20px rgba(202, 106, 52, 0.4), 0 0 30px rgba(202, 106, 52, 0.2);
+  }
+}
+
+@keyframes cardGlow {
+  0%, 100% {
+    border: 1px solid rgba(202, 106, 52, 0.4);
+    box-shadow: 0 0 15px rgba(202, 106, 52, 0.3), inset 0 0 8px rgba(202, 106, 52, 0.1);
+  }
+  50% {
+    border: 1px solid rgba(202, 106, 52, 0.7);
+    box-shadow: 0 0 25px rgba(202, 106, 52, 0.5), 0 0 35px rgba(202, 106, 52, 0.3), inset 0 0 12px rgba(202, 106, 52, 0.2);
+  }
+}
+
+@keyframes borderFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes hoverGradient {
+  0%, 100% {
+    background: radial-gradient(50% 50% at 50% 8%, rgba(59, 21, 18, 1) 0%, rgba(0, 0, 0, 1) 100%);
+  }
+  50% {
+    background: radial-gradient(50% 50% at 50% 8%, rgba(89, 31, 28, 1) 0%, rgba(30, 10, 8, 1) 100%);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(202, 106, 52, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(202, 106, 52, 0.8), 0 0 30px rgba(202, 106, 52, 0.6);
+  }
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(202, 106, 52, 0.3), 0 0 10px rgba(202, 106, 52, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(202, 106, 52, 0.6), 0 0 20px rgba(202, 106, 52, 0.4);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hover\:animate-glow:hover {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.hover\:animate-pulse-glow:hover {
+  animation: pulseGlow 1.5s ease-in-out infinite;
+}
+
+.animate-text-glow {
+  animation: textGlow 3s ease-in-out infinite;
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.6s ease-out forwards;
+}
+
+.hover\:animate-card-glow:hover {
+  animation: cardGlow 3s ease-in-out infinite;
+}
+
+.hover\:animate-border-flow:hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover\:animate-border-flow:hover::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    rgba(202, 106, 52, 0.8), 
+    rgba(202, 106, 52, 0.2), 
+    rgba(202, 106, 52, 0.8), 
+    rgba(202, 106, 52, 0.2),
+    rgba(202, 106, 52, 0.8)
+  );
+  background-size: 200% 200%;
+  animation: borderFlow 4s linear infinite;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.animate-hover-gradient:hover {
+  animation: hoverGradient 1.5s ease-in-out infinite;
+}
+
+@layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: transparent;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: transparent;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+  }
+}
